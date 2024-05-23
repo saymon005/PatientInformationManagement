@@ -1,0 +1,146 @@
+﻿@model PatientInformation.Models.PatientInfo
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #218838;
+            }
+
+        .text-danger {
+            color: red;
+        }
+
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Patient Information</h2>
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label for="PatientName">Patient Name *</label>
+                <input type="text" class="form-control" id="PatientName" name="PatientName" asp-for="PatientName" />
+                <span asp-validation-for="PatientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="DiseasesName">Diseases Name *</label>
+                <select class="form-control" id="DiseasesName" name="DiseasesName" asp-for="DiseasesName">
+                    <option value="">Select a disease</option>
+                    @if (ViewBag.Diseases != null)
+                    {
+                        foreach (var disease in ViewBag.Diseases)
+                        {
+                            <option value="@disease">@disease</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="DiseasesName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Epilepsy">Epilepsy *</label>
+                <select class="form-control" id="Epilepsy" name="Epilepsy" asp-for="Epilepsy">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Other NCDs</label>
+                <select class="form-control" multiple asp-for="OtherNCDs">
+                    <option>Asthma</option>
+                    <option>Cancer</option>
+                    <option>Disorders of ear</option>
+                    <option>Disorder of eye</option>
+                    <option>Mental illness</option>
+                    <option>Oral health problems</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Allergies *</label>
+                <select class="form-control" multiple asp-for="Allergies">
+                    <option>Drugs - Penicillin</option>
+                    <option>Drugs - Others</option>
+                    <option>Animals</option>
+                    <option>Food</option>
+                    <option>Ointments</option>
+                    <option>Plant</option>
+                    <option>Sprays</option>
+                    <option>Others</option>
+                    <option>No Allergies</option>
+                </select>
+                <span asp-validation-for="Allergies" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <a href="@Url.Action("Index", "PatientInfo")" class="back-button">Back to Index</a>
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

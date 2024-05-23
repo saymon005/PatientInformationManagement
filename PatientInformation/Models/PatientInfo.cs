@@ -4,6 +4,7 @@ namespace PatientInformation.Models
 {
     public class PatientInfo
     {
+        public int ID { get; set; }
         [Required]
         public string PatientName { get; set; }
 

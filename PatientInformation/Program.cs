@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient("MyApiClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:44362/api/");
+    client.BaseAddress = new Uri("https://localhost:7133/api/");
 });
 var app = builder.Build();
 
@@ -27,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=PatientInfo}/{action=Index}/{id?}");
 
 app.Run();
