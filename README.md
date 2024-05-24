@@ -1,5 +1,5 @@
 # PatientInformationManagement
-Here I have tried to design a Patient Management System. For the backend, I used ASP.NET Core Web API and MS SQL Server. Use Entity Framework and follow repository pattern during the design of this application. For frontend, I used ASP.NET Core MVC and Razor View. 
+Here I have tried to design a Patient Management System. For the backend, I used ASP.NET Core Web API 8.0 and MS SQL Server. Use Entity Framework and follow repository pattern during the design of this application. For frontend, I used ASP.NET Core MVC 8.0 and Razor View. 
 
 Software: Microsoft Visual Studio 2022, MS SQL Server 2019
 
